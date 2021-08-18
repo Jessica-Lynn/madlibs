@@ -45,14 +45,11 @@ def greet_person():
 def show_madlib_form():
     """Get user's game response"""
 
-    get_response = request.args.get("game_option")
+    get_response = request.args.get("value")
 
-    if value == "Yes":
+    if value == "yes":
         return render_template("game.html",
-                                person=celebrity
-                                color=color
-                                noun=noun
-                                adj=adjective)
+                                value=value)
     else:
         return render_template("goodbye.html")
 
@@ -61,7 +58,11 @@ def show_madlib():
     """Fill the person, color, noun, adj provided by user"""
 
 
-
+    return render_template("madlibs_string.html",
+                            person=celebrity,
+                            color=color,
+                            noun=noun,
+                            adj=adjective)
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also
